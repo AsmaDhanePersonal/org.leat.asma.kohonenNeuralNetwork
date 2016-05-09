@@ -1,13 +1,14 @@
 package kohonenMap;
 
 
+
 /** 
  * 
  * @author Asma DHANE
  *
  * This class is for the network creation and definition
  * The number of neurons is equal to the number of nodes in the WSN
- * so equal to the number of larning vectors 
+ * so equal to the number of learning vectors 
  *
  */
 
@@ -16,8 +17,7 @@ public class KohonenNetwork {
 	
 	protected Neuron[] kneuron; 
 	protected LearningFunction learningfunction; 
-	protected Topology topology;
-	protected int neuronNumber; 
+	protected int neuronNumber; //probably not known till we get the number of input vectors
 	
 	/* NOT SURE NEEDED
 	public KohonenNetwork(Neuron[] kneur, LearningFunction lf, Topology topo) {
@@ -27,10 +27,13 @@ public class KohonenNetwork {
 	//	topology = topo;
 	}*/
 	
-	//Constructor for network init
+	// =============  Constructor for network init ======== //
+	
 	//TODO: adjust weight num to input vectors. (dynamically)
 	
-	 public KohonenNetwork(int weightNumber, double[] maxWeight, int neurNum) {
+	//neuron number comes from number of inputvectors .. 
+	
+	 public KohonenNetwork(int weightNumber, double maxWeight, int neurNum) {
 	        kneuron = new Neuron[neurNum]; 
 	        this.neuronNumber = neurNum;
 	        for (int i=0; i<neurNum; i++){
@@ -39,6 +42,9 @@ public class KohonenNetwork {
 	         
 	        }
 	    }
+	 
+	      // ~ Just some kawaii GETTERS & SETTERS ~ //
+///////// ========================================== ////////////
 	 
 	 public Neuron getNeuron(int index){
 		 return kneuron[index];
@@ -56,12 +62,7 @@ public class KohonenNetwork {
 	public void setLf(LearningFunction lf) {
 		this.learningfunction = lf;
 	}
-	public Topology getTopo() {
-		return topology;
-	}
-	public void setTopo(Topology topo) {
-		this.topology = topo;
-	}
+
 
 	public int getNeuronNumber() {
 		return neuronNumber;
@@ -71,6 +72,6 @@ public class KohonenNetwork {
 		this.neuronNumber = neuronNumber;
 	} 
 	
-	
+///////// ========================================== ////////////
 	
 }

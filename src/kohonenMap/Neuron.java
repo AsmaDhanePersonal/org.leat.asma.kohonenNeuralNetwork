@@ -2,6 +2,7 @@ package kohonenMap;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 
@@ -9,32 +10,34 @@ import java.util.Random;
  *
  */
 
-//Kohonen neuron 
+//Kohonen neuron Class
 public class Neuron {
 	
-	protected int id; 
-
-	protected double[] weights; //randomly initiated weights 
-
-	//TODO: add activation fnction 
+	 private static final AtomicInteger count = new AtomicInteger(0); 	
+	 private final int id; 
 	
-	public Neuron(int weightNumber, double[] maxWeight){
-        if(weightNumber == maxWeight.length){
+	 protected double[] weights;
+	 protected double maxWeight;
+	 protected int weightsNumber; //randomly initiated weights 
+
+	//TODO: add activation function 
+	
+	public Neuron(int weightsNumber, double maxWeight){
+		id= count.incrementAndGet(); 
+		this.weightsNumber= weightsNumber;
+		this.maxWeight = maxWeight;
             Random rand = new Random();
-            weights = new double[weightNumber];
-            for(int i=0; i< weightNumber; i++){
-                weights[i] = rand.nextDouble() * maxWeight[i];
+            weights = new double[weightsNumber];
+            for(int i=0; i< weightsNumber; i++){
+                weights[i] = rand.nextDouble() * maxWeight;
             }
-        }
     }
 	
 	
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public double[] getWeights() {
 		return weights;
 	}

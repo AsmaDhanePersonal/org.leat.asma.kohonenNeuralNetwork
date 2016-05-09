@@ -1,5 +1,7 @@
 package kohonenMap;
 
+// NOT SURE IS NEEDED
+
 public class LearningVector {
    //TODO: a vector of weights.
 	//Check the number of weights from incomming vector
