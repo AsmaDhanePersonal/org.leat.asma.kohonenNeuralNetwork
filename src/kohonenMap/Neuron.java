@@ -19,6 +19,7 @@ public class Neuron {
 	 protected double[] weights;
 	 protected double maxWeight;
 	 protected int weightsNumber; //randomly initiated weights 
+	 // protected 
 
 	//TODO: add activation function 
 	

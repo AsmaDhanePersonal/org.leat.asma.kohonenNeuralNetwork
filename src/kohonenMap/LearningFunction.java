@@ -25,8 +25,26 @@ public class LearningFunction {
 	//TODO: while more vectors coming -> learn. 
 //While more learning vectors coming, this function takes them and then counts the number of neurons
 
-	KohonenNetwork kn; 
-	int numIteration;
+	private KohonenNetwork kn; 
+	public int getNumIteration() {
+		return numIteration;
+	}
+
+	public void setNumIteration(int numIteration) {
+		this.numIteration = numIteration;
+	}
+
+	public int getRadius() {
+		return radius;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
+	private int numIteration;
+	private int radius = 4 ; 
+	
 	
 	
 	public LearningFunction(KohonenNetwork kn , int numIteration){
@@ -35,13 +53,13 @@ public class LearningFunction {
 	}
 	
 	//For each vector OR for the entire collection ? 
-	//depends on the implementationwith OMNET++ .. é_è
+	//depends on the implementation with OMNET++ .. é_è
 	public void learn(double[] vector)
 	{ 
 		System.out.println("Learnin starts here ...");
 		 Neuron bestNeuron = null ; 
 		 bestNeuron = bestMatchingUnit(vector);
-	                changeNeuralWeight(bestNeuron, vector);
+	                changeNeuralWeight(bestNeuron, vector, radius);
 		
 	}
 	
@@ -51,12 +69,12 @@ public class LearningFunction {
 		for(double[] vector : vectors){
 		 Neuron bestNeuron = null ; 
 		 bestNeuron = bestMatchingUnit(vector);
-	                changeNeuralWeight(bestNeuron, vector);
+	                changeNeuralWeight(bestNeuron, vector, radius);
 		}
 		
 	}
 	
-	protected void changeNeuralWeight(Neuron neur ,  double[] inputvect){
+	protected void changeNeuralWeight(Neuron neur ,  double[] inputvect, int r){
 		//change neuron weight
 		//change neighbors weight - Gaussian extension
 		//For now it is winner takes all function (only the winning neuron wins)
@@ -65,7 +83,7 @@ public class LearningFunction {
 		System.out.println("Initial weight:");
 		System.out.println(neur.toString());
 		for(int i=0; i< weights; i++ ){
-			neur.weights[i]= inputvect[i];
+			neur.weights[i] += getGaussianValue(i,r) *  inputvect[i];
 		}
 		System.out.println("Modified weight:");
 		System.out.println(neur.toString());
@@ -112,6 +130,12 @@ public class LearningFunction {
 	        distance = Math.sqrt(sum);
 	        return distance;
 	}
+	
+	//Gaussian value    (interation, radius) 
+	private double getGaussianValue(int k,int r){
+	       return java.lang.Math.exp(-(java.lang.Math.pow(k,2))/ (2 * r * r));
+	    }
+
 	
 	public KohonenNetwork getKn() {
 		return kn;

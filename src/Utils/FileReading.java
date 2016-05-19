@@ -27,7 +27,7 @@ public class FileReading {
          FileReader fr = new FileReader(file);
          BufferedReader input = new BufferedReader(fr);
          String line;
-         System.out.println("Vector drom: \"" + fileName + "\" are importing...");
+         System.out.println("Vector from: \"" + fileName + "\" are importing...");
          while((line = input.readLine()) != null){ //reads one lien from the file
              rows ++;               
              tempTable = line.split(" "); //splits the line into variables 

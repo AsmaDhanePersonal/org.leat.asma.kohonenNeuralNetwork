@@ -1,6 +1,7 @@
 package org.leat.asma.kohonenneuralnetwork;
 
 import java.util.ArrayList;
+
 import Utils.FileReading;
 import kohonenMap.KohonenNetwork;
 import kohonenMap.LearningFunction;
@@ -17,7 +18,7 @@ public class KohonenMapMain {
 		double maxWeight= 1000;
 		ArrayList<double[]> inputVectors ;
 		FileReading fRding = new FileReading();
-		inputVectors = fRding.readFile("C:/Users/Amidala/inputvectors.txt");
+		inputVectors = fRding.readFile("C:/DataSet/outfile.txt");
 		int weightNumber = inputVectors.get(0).length;
 		int neurNum = inputVectors.size();
 		KohonenNetwork kn = new KohonenNetwork(weightNumber, maxWeight, neurNum);

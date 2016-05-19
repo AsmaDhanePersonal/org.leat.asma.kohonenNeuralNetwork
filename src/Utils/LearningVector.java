@@ -1,4 +1,4 @@
-package kohonenMap;
+package Utils;
 
 // NOT SURE IS NEEDED
 
