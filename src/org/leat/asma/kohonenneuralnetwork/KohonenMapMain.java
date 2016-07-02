@@ -24,6 +24,7 @@ public class KohonenMapMain {
 		KohonenNetwork kn = new KohonenNetwork(weightNumber, maxWeight, neurNum);
 		LearningFunction lf = new LearningFunction(kn, neurNum);
 		lf.learn(inputVectors);
+		kn.writeFile();
 
 	}
 

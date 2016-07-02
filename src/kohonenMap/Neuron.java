@@ -42,6 +42,7 @@ public class Neuron {
 	public double[] getWeights() {
 		return weights;
 	}
+	
 	public void setWeights(double[] weights) {
 		this.weights = weights;
 	}
@@ -51,6 +52,23 @@ public class Neuron {
 	public String toString() {
 		return "Neuron [id=" + id + ", weights=" + Arrays.toString(weights) + "]";
 	}
+
+	//the weights array without the [] of the basic toString  w1,w2,w3 .. 
+	public String weightsToString(){
+		String sb = String.valueOf(weights[0]);
+				
+		for(int i=1;i<this.getWeights().length;i++){
+			sb += "," + String.valueOf(weights[i]);
+		}
+		return sb;
+	}
+	
+	//a format that can be written into a CSV file id,w1,w2,w3 .. \n
+	public String toStringForCSV() {
+		return id + "," + weightsToString() + "\n";
+	}
+	
+
 	
 	
 }

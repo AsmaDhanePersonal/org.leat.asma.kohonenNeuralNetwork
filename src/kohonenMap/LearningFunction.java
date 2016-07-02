@@ -77,7 +77,6 @@ public class LearningFunction {
 	protected void changeNeuralWeight(Neuron neur ,  double[] inputvect, int r){
 		//change neuron weight
 		//change neighbors weight - Gaussian extension
-		//For now it is winner takes all function (only the winning neuron wins)
 		
 		int weights = neur.weights.length;
 		System.out.println("Initial weight:");
@@ -87,6 +86,7 @@ public class LearningFunction {
 		}
 		System.out.println("Modified weight:");
 		System.out.println(neur.toString());
+		
 		
 		
 	}

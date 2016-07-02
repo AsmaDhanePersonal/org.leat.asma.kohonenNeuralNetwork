@@ -1,5 +1,9 @@
 package kohonenMap;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 
 
 /** 
@@ -71,6 +75,27 @@ public class KohonenNetwork {
 	public void setNeuronNumber(int neuronNumber) {
 		this.neuronNumber = neuronNumber;
 	} 
+	
+	//to write all the neurons in a csv file
+	public void writeFile(){
+		PrintWriter pw;
+		try {
+			pw = new PrintWriter(new File("C:/DataSet/out.csv"));
+			System.out.println("Starting writing to CSV file!");
+			for(int i=0; i<this.neuronNumber; i++){
+		        pw.write(this.getNeuron(i).toStringForCSV());
+			}
+		        pw.close();
+		        System.out.println("done!");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+
+	}
+
+
 	
 ///////// ========================================== ////////////
 	
