@@ -28,16 +28,13 @@ public class FileReading {
          BufferedReader input = new BufferedReader(fr);
          String line;
          System.out.println("Vector from: \"" + fileName + "\" are importing...");
-         while((line = input.readLine()) != null){ //reads one lien from the file
+         while((line = input.readLine())!=null){ //reads one lien from the file
              rows ++;               
              tempTable = line.split(" "); //splits the line into variables 
              int tableLenght = tempTable.length; 
              tempList = new double[tableLenght];
               //List where the strings will be stored as metrics
              for(int i = 0; i< tableLenght; i++){ // Loop to convert strings into doubles 
-                 double weightVal = 0;
-
-                     
 
                  tempList[i] = Double.parseDouble(tempTable[i]);
                  System.out.println("THESE ARE THE CONVERTED DOUBLES:");
