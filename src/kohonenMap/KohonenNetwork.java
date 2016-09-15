@@ -8,9 +8,15 @@ import topology.Grid;
 
 
 
-/** 
+/**
  * 
- * @author Asma DHANE
+ * @author: Asma Dhane
+ *  asmadhane@gmail.com
+ *  
+ *
+ */
+
+/*
  *
  * This class is for the network creation and definition
  * The number of neurons is equal to the number of nodes in the WSN

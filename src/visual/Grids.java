@@ -15,6 +15,18 @@ import kohonenMap.KohonenNetwork;
 import kohonenMap.Neuron;
 import topology.Grid;
 
+/**
+ * 
+ * @author: Asma Dhane
+ *  asmadhane@gmail.com
+ *  
+ *
+ */
+
+/*
+ * a class for the visualisaiton of the learning and clustering
+ */
+
  @SuppressWarnings("serial")
 public class Grids extends Canvas{
 	 int width, height;
@@ -98,11 +110,12 @@ public class Grids extends Canvas{
 			
 		 Color color;
 		 switch(clust){
+		 case -1: color = Color.gray; break;
 		 case 1: color = Color.GREEN; break;
 		 case 2: color = Color.YELLOW; break;
 		 case 3: color = Color.CYAN; break;
 		 case 4: color = Color.RED; break;
-		 default: color = Color.darkGray ; break;
+		 default: color = Color.pink ; break;
 		 }
 			 
 		 	g= this.getGraphics();

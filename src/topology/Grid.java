@@ -3,7 +3,11 @@ package topology;
 import kohonenMap.KohonenNetwork;
 import kohonenMap.Neuron;
 
- 
+/**
+ * 
+ * @author: Asma Dhane
+ *  asmadhane@gmail.com
+ */
 
 public class Grid {
 	
@@ -28,7 +32,7 @@ public class Grid {
 				matrix[i][j] = kn.getNeuron(k);
 				kn.getNeuron(k).setY(j*100/wid);
 				kn.getNeuron(k).setX(i*100/len);
-				double[] weights = {(double)j*100/wid ,(double)i*100/len};
+				double[] weights = {0,(double)j*100/wid ,(double)i*100/len,100};
 				kn.getNeuron(k).setWeights(weights) ;
 				
 				

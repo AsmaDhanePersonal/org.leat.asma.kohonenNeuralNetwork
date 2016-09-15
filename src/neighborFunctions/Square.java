@@ -5,6 +5,14 @@ import java.util.List;
 
 import kohonenMap.Neuron;
 
+/**
+ * 
+ * @author: Asma Dhane
+ *  asmadhane@gmail.com
+ *  
+ *
+ */
+
 public class Square {
 		/* 
 		//Get neighbors
@@ -22,11 +30,11 @@ public class Square {
 			this.neighbors = neighbors;
 		}
 		
-		public List<Neuron> getNeighbors(Neuron[] kn, double x, double y, double radius){
+		public List<Neuron> getNeighbors(Neuron[] kn, double[] weights, double radius){
 			
 			for(Neuron n : kn){
 				for(int r=0;r<radius;r++) {
-				if(Math.abs((x-n.getX())+ (y-n.getY()))== r){
+				if(Math.abs((weights[1]-n.getX())+ (weights[2]-n.getY()))== r){
 					neighbors.add(n);
 				}		
 				}

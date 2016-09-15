@@ -7,15 +7,20 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+import Utils.SimCommunicator;
 import neighborFunctions.Square;
 import topology.Grid;
 import visual.Grids;
 
 /**
  * 
- * @author Amidala
+ * @author: Asma Dhane
+ *  asmadhane@gmail.com
+ *  
  *
  */
+
+
 /*
  * This class defines the learning algorithm of the Kohonen Network
  * it uses Euclidian distance as a metric 
@@ -106,8 +111,8 @@ public void learn(double[] vector, int iteration, int iMax)
 		 Neuron bestNeuron = null ; 
 		 bestNeuron = bestMatchingUnit(vector);
 		 changeNeuralWeight(bestNeuron, vector,iteration, iMax);
-		 double x1 = vector[0];
-		 double y1 = vector[1];
+		 double x1 = vector[1];
+		 double y1 = vector[2];
 		 
 		 f.repaint(x1,y1);
 		}
@@ -151,7 +156,7 @@ public void learn(double[] vector, int iteration, int iMax)
 		
 		 neighborWidth = getNeighbourhoodWidth(it);
 		
-		 List<Neuron> neurList = squareTopo.getNeighbors(kn.getKneur(), neur.getX(), neur.getY(), neighborWidth );
+		 List<Neuron> neurList = squareTopo.getNeighbors(kn.getKneur(), neur.getWeights(), neighborWidth );
 		 
 		 for(Neuron n : neurList){
 
@@ -166,8 +171,8 @@ public void learn(double[] vector, int iteration, int iMax)
 			
 		}
 		
-		n.setX(n.getWeights()[0]);
-	    n.setY(n.getWeights()[1]);
+		n.setX(n.getWeights()[1]);
+	    n.setY(n.getWeights()[2]);
 		
 			 }
 
@@ -257,6 +262,43 @@ public void learn(double[] vector, int iteration, int iMax)
 	private double getNeighbourhoodWidth(int it) {
 		float puiss = (float)it/iMax;
 		return initRadius * Math.pow((finalRadius/initRadius),puiss);
+	}
+	
+	
+
+	public void learnFromFile(int VectNum, int weightNumber, int iMax, ArrayList<double[]> inputVectors , String in , LearningFunction lf, int count) {
+		
+		for(int j =0 ; j<VectNum-1 ; j++){
+			String learnVectStr ;
+			String[] strArray = new String[3];
+			double[] learnVect = new double[weightNumber];
+			do{
+			learnVectStr = SimCommunicator.readFromSim(in, count);
+			if(count==26)
+			System.out.println(count);
+			}while(learnVectStr.equals("AGAIN"));
+			if(!learnVectStr.equals("NOP.")) 
+			{count++;
+			System.out.println(count);
+			strArray = learnVectStr.split(" ");
+			learnVect[0] = Double.parseDouble(strArray[0]);
+			learnVect[1] = Double.parseDouble(strArray[1]);
+			learnVect[2] = Double.parseDouble(strArray[2]);
+			learnVect[3] = Double.parseDouble(strArray[3]);
+			inputVectors.add(learnVect);}
+			else{break;}
+			}
+		
+		for(int i=0;i<iMax;i++){
+			
+			if (inputVectors.size() < 30) break;
+			else{
+
+	    //LEARNING !!  
+		 lf.learn(inputVectors, i, iMax);	}
+		//lf.learn(learnVect, i, iMax);
+		}
+		
 	}
 
 
